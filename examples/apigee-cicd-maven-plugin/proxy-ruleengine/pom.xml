@@ -79,10 +79,10 @@
                 <apigee.profile>test</apigee.profile>
                 <apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
                 <apigee.apiversion>v1</apigee.apiversion>
-                <apigee.org>graphite-argon-423004-n7</apigee.org>
-                <apigee.env>eval</apigee.env>
+                <apigee.org>rolandos-appmod-demos</apigee.org>
+                <apigee.env>test-env</apigee.env>
                 <apigee.username>${username}</apigee.username>
-                <apigee.password></apigee.password>  
+                <apigee.password>${password}</apigee.password>  
                 <apigee.options>${options}</apigee.options>
                 <apigee.revision>${revision}</apigee.revision>           
             </properties>
