@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="rulengine-service">
+  <Description/>
+  <FaultRules/>
+  <PreFlow name="PreFlow">
+    <Request>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <Flows>
+    <Flow name="POST /rules">
+      <Description/>
+      <Request/>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rules") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="GET /rules">
+      <Description/>
+      <Request/>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rules") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="GET /rules/{id}">
+      <Description/>
+      <Request/>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rules/*") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="PUT /rules/{id}">
+      <Description/>
+      <Request/>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rules/*") and (request.verb = "PUT")</Condition>
+    </Flow>
+    <Flow name="DELETE /rules/{id}">
+      <Description/>
+      <Request/>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rules/*") and (request.verb = "DELETE")</Condition>
+    </Flow>
+    <Flow name="POST /rulesets/execute">
+      <Description/>
+      <Request/>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rulesets/execute") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="POST /rulesets">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>EV-RULESET</Name>
+        </Step>
+        <Step>
+          <Name>SCR-DYNAMIC-BODY-BASE64</Name>
+        </Step>
+        <Step>
+          <Condition>(ruleset.id != null) and (ruleset.frequency != null)</Condition>
+          <Name>SC-SCHEDULER-CALL</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rulesets") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="GET /rulesets/{id}">
+      <Description/>
+      <Request/>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rulesets/*") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="PUT /rulesets/{id}">
+      <Description/>
+      <Request/>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rulesets/*") and (request.verb = "PUT")</Condition>
+    </Flow>
+    <Flow name="DELETE /rulesets/{id}">
+      <Description/>
+      <Request/>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rulesets/*") and (request.verb = "DELETE")</Condition>
+    </Flow>
+    <Flow name="GET /rulesets">
+      <Description/>
+      <Request/>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/rulesets") and (request.verb = "GET")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPTargetConnection>
+    <Properties/>
+    <URL>https://ruleengine-management-53pqxdnhqa-uc.a.run.app</URL>
+    <Authentication>
+      <GoogleIDToken>
+        <Audience>https://ruleengine-management-53pqxdnhqa-uc.a.run.app</Audience>
+      </GoogleIDToken>
+    </Authentication>
+  </HTTPTargetConnection>
+</TargetEndpoint>

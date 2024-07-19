@@ -1,0 +1,440 @@
+openapi: 3.0.1
+info:
+  title: MCM Rule Engine
+  description: Microservice that exposes rule engine APIs
+  version: 1.0.4
+servers:
+  - url: https://34-36-164-209.nip.io/business/rules-engine
+tags:
+  - name: rule
+  - name: ruleset  
+paths:
+  /rules:
+    get:
+      tags:
+        - rule      
+      summary: Get rules
+      operationId: getRules
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+        - name: offset
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            minimum: 0
+            default: 0      
+      responses:
+        '200':
+          description: A successful response
+          content:
+            'application/json;charset=utf-8':
+              schema:
+                $ref: '#/components/schemas/PaginatedRules'
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write
+    post:
+      tags:
+        - rule      
+      summary: Create rule
+      operationId: createRule
+      requestBody:
+        content:
+          'application/json;charset=utf-8':
+            schema:
+              $ref: '#/components/schemas/Rule'
+      responses:
+        '200':
+          description: A successful response
+          content:
+            'application/json;charset=utf-8':
+              schema:
+                $ref: '#/components/schemas/Rule'
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write
+  /rules/{id}:
+    get:
+      tags:
+        - rule      
+      summary: Get rule by id
+      operationId: getRule
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Rule returned successfully
+          content:
+            'application/json;charset=utf-8':
+              schema:
+                $ref: '#/components/schemas/Rule'
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write
+    put:
+      tags:
+        - rule      
+      summary: Update rule by id
+      operationId: updateRule
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          'application/json;charset=utf-8':
+            schema:
+              $ref: '#/components/schemas/Rule'
+      responses:
+        '200':
+          description: Rule updated successfully
+          content:
+            'application/json;charset=utf-8':
+              schema:
+                $ref: '#/components/schemas/Rule'
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write 
+    delete:
+      tags:
+        - rule      
+      summary: Delete rule by id
+      operationId: deleteRule
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Rule deleted successfully
+          content:
+            'application/json;charset=utf-8':
+              schema:
+                $ref: '#/components/schemas/Rule'
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write
+  /rulesets:
+    get:
+      tags:
+        - ruleset    
+      summary: Get ruleset list
+      operationId: getRuleSets
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+        - name: offset
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            minimum: 0
+            default: 0      
+      responses:
+        '200':
+          description: A successful response
+          content:
+            'application/json;charset=utf-8':
+              schema:
+                $ref: '#/components/schemas/PaginatedRulesets'
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write
+    post:
+      tags:
+        - ruleset    
+      summary: Create ruleset
+      operationId: createRuleSet
+      requestBody:
+        content:
+          'application/json;charset=utf-8':
+            schema:
+              $ref: '#/components/schemas/RuleSet'
+      responses:
+        '200':
+          description: A successful response          
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write
+            
+  /rulesets/{id}:
+    get:
+      tags:
+        - ruleset    
+      summary: Get ruleset by id
+      operationId: getRuleSet
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Ruleset returned successfully
+          content:
+            'application/json;charset=utf-8':
+              schema:
+                $ref: '#/components/schemas/RuleSet'
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write
+    put:
+      tags:
+        - ruleset    
+      summary: Update ruleset by id
+      operationId: updateRuleSet
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          'application/json;charset=utf-8':
+            schema:
+              $ref: '#/components/schemas/RuleSet'
+      responses:
+        '200':
+          description: Ruleset updated successfully
+          content:
+            'application/json;charset=utf-8':
+              schema:
+                $ref: '#/components/schemas/RuleSet'
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write
+    delete:
+      tags:
+        - ruleset    
+      summary: Delete ruleset by id
+      operationId: deleteRuleSet
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Ruleset deleted successfully
+          content:
+            'application/json;charset=utf-8':
+              schema:
+                $ref: '#/components/schemas/RuleSet'
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write
+            
+  /rulesets/execute:
+    post:
+      tags:
+        - ruleset    
+      summary: Execute ruleset
+      operationId: execute
+      requestBody:
+        content:
+          'application/json;charset=utf-8':
+            schema:
+              $ref: '#/components/schemas/Execute'
+      responses:
+        '200':
+          description: A successful response   
+      security:
+        - ApiKeyAuth:
+            - system/rule.read
+            - system/rule.write
+        - bearerAuth: 
+            - system/rule.read
+            - system/rule.write           
+components:
+  schemas:
+    Execute:
+      properties:
+        ruleSetId:
+          type: string   
+    Event:
+      properties:
+        create:
+          type: array
+          items:
+            type: string
+        update:
+          type: array
+          items:
+            type: string
+    PaginatedRules:
+      type: object
+      properties:
+        content:
+          type : array
+          items: 
+            $ref: '#/components/schemas/Rule'
+        offset:
+          type: number
+        limit:
+          type: number
+        prev:
+          type: string
+        next:
+          type: string
+    PaginatedRulesets:
+      type: object
+      properties:
+        content:
+          type : array
+          items: 
+            $ref: '#/components/schemas/RuleSet'
+        offset:
+          type: number
+        limit:
+          type: number
+        prev:
+          type: string
+        next:
+          type: string
+    Rule:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        view:
+          type: string
+        operator:
+          type: string
+        type:
+          type: string
+        plan_definition_id:
+          type: string
+        dml:
+          type: string
+        conditions:
+          type: array
+          items:
+            type: object
+            properties:
+              column:
+                type: string
+              operation:
+                type: string
+              value:
+                type: string
+        events:
+          type: object
+          properties:
+            success:
+              $ref: '#/components/schemas/Event'
+
+    RuleSetList:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+          rule_count:
+            type: integer
+    RuleSet:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        purpose:
+          type: string
+        frequency:
+          type: string
+        rules:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              ruleId:
+                type: string
+  securitySchemes:
+      ApiKeyAuth:
+       type: apiKey
+       in: header
+       name: apikey
+      bearerAuth:      
+        type: http
+        scheme: bearer
+        bearerFormat: JWT  

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="96" name="RULE-ENGINE-API">
+  <DisplayName/>
+  <Description>Rules Engine Base Path Pointing to Cloud Run Endpoint</Description>
+  <CreatedAt>1715874313070</CreatedAt>
+  <LastModifiedAt>1715874313070</LastModifiedAt>
+  <BasePaths>/business/rules-engine</BasePaths>
+  <Policies>
+    <Policy>OAS_MCM_Rule_Engine</Policy>
+    <Policy>CORS</Policy>
+    <Policy>SA-Rule-Engine</Policy>
+    <Policy>Q-Rule-Engine</Policy>
+    <Policy>FC-VALIDATE-OAUTH2</Policy>
+    <Policy>FC-APIKEY</Policy>
+    <Policy>AM-ERROR-VERIFY-OAUTH2</Policy>
+    <Policy>RF-EXCEPTION</Policy>
+    <Policy>AM-RESPONSE-TEMPLATE</Policy>
+    <Policy>FC-LOGGING</Policy>
+    <Policy>JS-WORKFLOW-EXECUTIONS</Policy>
+    <Policy>SC-SCHEDULER-CALL</Policy>
+    <Policy>EV-RULESET</Policy>
+    <Policy>SCR-DYNAMIC-BODY-BASE64</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+  <Resources>
+    <Resource>jsc://WORKFLOW-EXECUTIONS.js</Resource>
+    <Resource>oas://rule_engine_openapi_spec_v4.yaml</Resource>
+    <Resource>py://dynamicBodyBase64.py</Resource>
+  </Resources>
+  <TargetEndpoints>
+    <TargetEndpoint>rulengine-service</TargetEndpoint>
+    <TargetEndpoint>workflow-executions</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>

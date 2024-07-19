@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Quota continueOnError="false" enabled="true" name="Q-Rule-Engine">
+  <DisplayName>Q-Rule-Engine</DisplayName>
+  <Properties/>
+  <Interval>1</Interval>
+  <TimeUnit>minute</TimeUnit>
+  <Allow count="30"/>
+</Quota>

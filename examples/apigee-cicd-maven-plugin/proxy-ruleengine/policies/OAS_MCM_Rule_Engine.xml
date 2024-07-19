@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OASValidation continueOnError="false" enabled="true" name="OAS_MCM_Rule_Engine">
+  <DisplayName>OAS_MCM_Rule_Engine</DisplayName>
+  <Properties/>
+  <Options>
+    <ValidateMessageBody>true</ValidateMessageBody>
+    <AllowUnspecifiedParameters>
+      <Header>true</Header>
+      <Query>true</Query>
+      <Cookie>true</Cookie>
+    </AllowUnspecifiedParameters>
+  </Options>
+  <Source>request</Source>
+  <OASResource>oas://rule_engine_openapi_spec_v4.yaml</OASResource>
+</OASValidation>
