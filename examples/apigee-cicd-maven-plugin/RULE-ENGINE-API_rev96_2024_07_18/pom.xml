@@ -62,8 +62,8 @@
                 <apigee.profile>prod</apigee.profile>
                 <apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
                 <apigee.apiversion>v1</apigee.apiversion>
-                <apigee.org>{org}</apigee.org>
-                <apigee.env>{enviroment}</apigee.env>
+                <apigee.org>rolandos-appmod-demos</apigee.org>
+                <apigee.env>prod-test</apigee.env>
                 <apigee.username>{username}</apigee.username>
                 <apigee.password>{password}</apigee.password>  
                 <apigee.authtype>oauth</apigee.authtype> <!-- only option -->
@@ -72,21 +72,7 @@
                  <apigee.options>${options}</apigee.options> <!-- override is default. Other options are async|clean-->
                 <apigee.googletoken.email>${googleTokenEmail}</apigee.googletoken.email> <!-- Available in Apigee X and Apigee hybrid 1.6 + -->
             </properties>
-        </profile>
-        <profile>
-           <id>test</id>
-            <properties>
-                <apigee.profile>test</apigee.profile>
-                <apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-                <apigee.apiversion>v1</apigee.apiversion>
-                <apigee.org>rolandos-appmod-demos</apigee.org>
-                <apigee.env>test-env</apigee.env>
-                <apigee.username>${username}</apigee.username>
-                <apigee.password>${password}</apigee.password>  
-                <apigee.options>${options}</apigee.options>
-                <apigee.revision>${revision}</apigee.revision>           
-            </properties>
-        </profile>        
+        </profile>  
         <profile>
             <id>deployonly</id>
             <build>
