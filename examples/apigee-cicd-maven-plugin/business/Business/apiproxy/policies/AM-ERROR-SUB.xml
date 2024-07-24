@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-ERROR-SUB">
+  <DisplayName>AM-ERROR-SUB</DisplayName>
+  <Properties/>
+  <AssignVariable>
+    <Name>flow.error.code</Name>
+    <Value>404</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>flow.error.message</Name>
+    <Value>Incorrectly formed request</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>flow.error.http.code</Name>
+    <Value>404</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>flow.error.http.message</Name>
+    <Value>Incorrectly formed request</Value>
+  </AssignVariable>
+</AssignMessage>

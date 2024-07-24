@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+  <Description/>
+  <DefaultFaultRule>
+    <Step>
+      <Condition>(raisefault.RF-EXCEPTION.failed = true)</Condition>
+      <Name>AM-RESPONSE-TEMPLATE</Name>
+    </Step>
+    <AlwaysEnforce>true</AlwaysEnforce>
+  </DefaultFaultRule>
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>CORS</Name>
+      </Step>
+      <Step>
+        <Name>FC-APIKEY</Name>
+        <Condition>request.header.apikey != null</Condition>
+      </Step>
+      <Step>
+        <Condition>(request.header.Authorization != '') or (request.header.Authorization != null) and (request.header.apikey == null )</Condition>
+        <Name>FC-VALIDATE-OAUTH2</Name>
+      </Step>
+      <Step>
+        <Condition>(request.header.Authorization == '') or (request.header.Authorization == null) and (request.header.apikey == null )</Condition>
+        <Name>AM-ERROR-VERIFY-OAUTH2</Name>
+      </Step>
+      <Step>
+        <Condition>(raisefault.RF-EXCEPTION.failed = true)</Condition>
+        <Name>RF-EXCEPTION</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <Flows>
+    <Flow name="getAllSubscriptionsId">
+      <Description>Returns id list</Description>
+      <Request>
+      </Request>
+      <Response>
+        <Step>
+          <Name>JS-GET-ALL-RESPONSE</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/subscriptions") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="addSubscription">
+      <Description>Creates a subscription.</Description>
+      <Request>
+        <Step>
+          <Name>EV-DATA-SUB</Name>
+        </Step>
+        <Step>
+          <Name>JS-PARSE-FILTER</Name>
+        </Step>
+      </Request>
+      <Response>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/subscriptions") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="getSubscriptionById">
+      <Description>Returns a subscription object.</Description>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>JS-GET-ID-RESPONSE</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/subscriptions/{sub_id}") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="updateSubscriptionById">
+      <Description>Updates a subscription.</Description>
+      <Request>
+        <Step>
+          <Name>EV-SUB-ID-PATH</Name>
+        </Step>
+        <Step>
+          <Name>SC-DELETE-SUB</Name>
+        </Step>
+        <Step>
+          <Condition>(servicecallout.SC-DELETE-SUB.failed = true)</Condition>
+          <Name>AM-ERROR-SUBSCRIPTION</Name>
+        </Step>
+        <Step>
+          <Condition>(flow.error.http.code != null)</Condition>
+          <Name>RF-EXCEPTION</Name>
+        </Step>
+        <Step>
+          <Name>JS-PARSE-FILTER</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>JS-GET-ID-RESPONSE</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/subscriptions/{sub_id}") and (request.verb = "PUT")</Condition>
+    </Flow>
+    <Flow name="deleteSubscription">
+      <Description>Deletes a subscription.</Description>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>JS-DELETE-RESP</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/subscriptions/{sub_id}") and (request.verb = "DELETE")</Condition>
+    </Flow>
+    <Flow name="assignment">
+      <Description/>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/assignment") and (request.verb = "POST")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPProxyConnection>
+    <BasePath>/webhook-subscription-api</BasePath>
+    <Properties/>
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="business-service">
+    <Condition>(proxy.pathsuffix MatchesPath "/assignment") and (request.verb = "POST")</Condition>
+    <TargetEndpoint>business-service</TargetEndpoint>
+  </RouteRule>
+  <RouteRule name="default">
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>

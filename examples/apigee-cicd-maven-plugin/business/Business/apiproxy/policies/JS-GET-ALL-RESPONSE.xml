@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript continueOnError="false" enabled="true" timeLimit="200" name="JS-GET-ALL-RESPONSE">
+  <DisplayName>JS-GET-ALL-RESPONSE</DisplayName>
+  <Properties/>
+  <ResourceURL>jsc://get_all_response.js</ResourceURL>
+</Javascript>
