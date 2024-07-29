@@ -1,0 +1,31 @@
+steps:
+  - name: gcr.io/cloud-builders/git
+    args:
+      - clone
+      - '${_REPO}'
+  - name: gcr.io/cloud-builders/git
+    args:
+      - '-c'
+      - >-
+        git diff HEAD~ HEAD --quiet --name-only -- Proxies/${_PROXY_FOLDER} ||
+        touch execute.txt || echo 'No changes'
+    id: Check for changes
+    entrypoint: bash
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - '-c'
+      - 'Dbearer=$(gcloud auth print-access-token) && echo ${Dbearer}'
+    id: Save token to file
+    entrypoint: bash
+  - name: gcr.io/cloud-builders/mvn
+    args:
+      - '-c'
+      - |
+        mvn -f ./clientes-v1/pom.xml -Pprod -Pdeployonly install -Dapigee.config.options=create \
+        -Dusername="lourdesrojas@google.com" -Dpassword="mypassword" \
+        Dorg=rolandos-appmod-demos -Denv=test-env -Dbearer=${Dbearer}
+    id: Create and Deploy revision
+    entrypoint: bash
+timeout: 1600s
+options:
+  logging: CLOUD_LOGGING_ONLY
