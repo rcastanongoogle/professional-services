@@ -21,7 +21,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn -f professional-services/examples/apigee-cicd-maven-plugin/clientes/clientes-v1/pom.xml -Pprod -Pdeployonly install -Dapigee.config.options=create \
+        pwd && mvn -f professional-services/examples/apigee-cicd-maven-plugin/clientes/clientes-v1/pom.xml -Pprod -Pdeployonly install -Dapigee.config.options=create \
         -Dusername="lourdesrojas@google.com" -Dpassword="mypassword" \
         Dorg=rolandos-appmod-demos -Denv=test-env -Dbearer=${Dbearer}
     id: Create and Deploy revision
