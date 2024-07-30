@@ -81,22 +81,6 @@
                     <groupId>io.apigee.build-tools.enterprise4g</groupId>
                     <artifactId>apigee-edge-maven-plugin</artifactId>
                     <version>2.4.0</version>
-                    <executions>
-                        <execution>
-                            <id>configure-bundle</id>
-                            <phase>package</phase>
-                            <goals>
-                            <goal>configure</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>deploy-bundle</id>
-                            <phase>install</phase>
-                            <goals>
-                            <goal>deploy</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>  
                 </plugins>
             </build>
