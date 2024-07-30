@@ -24,7 +24,7 @@ steps:
         cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && \
         mvn -Pprod -Pdeployonly install -Dapigee.config.options=create \
         -Dusername="lourdesrojas@google.com" -Dpassword="mypassword" \
-        Dorg=rolandos-appmod-demos -Denv=test-env -Dbearer=${Dbearer}
+        Dorg=eplatam -Denv=test-env -Dbearer=${Dbearer}
     id: Create and Deploy revision
     entrypoint: bash
 timeout: 1600s
