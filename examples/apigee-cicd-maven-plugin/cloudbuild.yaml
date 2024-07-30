@@ -23,7 +23,7 @@ steps:
     args:
       - '-c'
       - |
-        cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && mvn-ntp process-resources apigee-enterprise:configure \
+        cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && mvn -ntp process-resources apigee-enterprise:configure \
         -Pdev -Dorg=$PROJECT_ID -Denv=$_APIGEE_TEST_ENV
   - name: gcr.io/cloud-builders/mvn
     args:
