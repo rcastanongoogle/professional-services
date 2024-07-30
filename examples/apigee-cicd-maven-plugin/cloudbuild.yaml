@@ -17,19 +17,11 @@ steps:
       - 'Dbearer=$(gcloud auth print-access-token) && echo ${Dbearer}'
     id: Save token to file
     entrypoint: bash
-  - name: 'gcr.io/cloud-builders/mvn'
-    id: "Package bundle"
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && mvn -ntp process-resources apigee-enterprise:configure \
-        -Pdev -Dorg=$PROJECT_ID -Denv=$_APIGEE_TEST_ENV
   - name: gcr.io/cloud-builders/mvn
     args:
       - '-c'
       - |
-        cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && \
+        mvn clean install && cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && \
         mvn apigee-enterprise:deploy -P prod  \
         -Dorg=rolandos-appmod-demos -Denv=test-env -Dbearer=${Dbearer}
     id: Create and Deploy revision
