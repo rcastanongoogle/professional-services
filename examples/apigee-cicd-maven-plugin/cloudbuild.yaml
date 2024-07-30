@@ -22,7 +22,7 @@ steps:
       - '-c'
       - |
         cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && mvn clean install -U && \
-        mvn com.apigee:apigee-enterprise:2.4.0:deploy -P prod  \
+        mvn com.apigee:apigee-enterprise:2.x:deploy -P prod  \
         -Dorg=rolandos-appmod-demos -Denv=test-env -Dbearer=${Dbearer}
     id: Create and Deploy revision
     entrypoint: bash
