@@ -24,10 +24,9 @@ steps:
       - '-c'
       - | 
         cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && \
-        mvn -ntp install -P prod -Dorg=rolandos-appmod-demos -Denv=prod-test -Dbearer=${cat /workspace/token.txt}
+        mvn -ntp install -P prod -Dorg=rolandos-appmod-demos -Denv=prod-test -Dbearer= $(cat /workspace/token.txt)
     id: Create and Deploy revision
     entrypoint: bash
 timeout: 1600s
 options:
   logging: CLOUD_LOGGING_ONLY
-  env: ['bearer=$(gcloud auth print-access-token)']
