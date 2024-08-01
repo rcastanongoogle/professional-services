@@ -21,7 +21,7 @@ steps:
     args:
       - '-c'
       - |
-        cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && cat parent-pom.xml && \
+        cat examples/apigee-cicd-maven-plugin/shared-pom.xml && cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && \
         mvn -ntp install -P prod -Dorg=rolandos-appmod-demos -Denv=prod-test -Dbearer=${Dbearer}
     id: Create and Deploy revision
     entrypoint: bash
