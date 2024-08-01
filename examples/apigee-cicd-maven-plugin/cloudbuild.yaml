@@ -1,16 +1,11 @@
 steps:
+#Primer paso: Traer el repositorio de código de Apigee
   - name: gcr.io/cloud-builders/git
-    args:
-      - ['clone', '-v' , '${_REPO}']
+    args: ['clone', '-v' , '${_REPO}']
     entrypoint: git
-  - name: gcr.io/cloud-builders/git
-    args:
-      - '-c'
-      - >-
-        git diff HEAD~ HEAD --quiet --name-only -- Proxies/${_PROXY_FOLDER} ||
-        touch execute.txt || echo 'No changes'
-    id: Check for changes
-    entrypoint: bash
+#Segundo paso: Imprimir el token de auth y mandarlo al siguiente step por medio de un .txt, ya que
+#el step que sigue es un container de maven y no puedes correr comandos gcloud
+#Se hace en un .txt por que es la única forma de enviar info entre steps (containers)
   - name: gcr.io/cloud-builders/gcloud
     args:
       - "-c"
