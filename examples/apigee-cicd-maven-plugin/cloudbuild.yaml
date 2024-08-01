@@ -18,7 +18,7 @@ steps:
     id: Save token to file
     entrypoint: bash
   - name: gcr.io/cloud-builders/mvn
-    args: ['cd' , 'examples/apigee-cicd-maven-plugin/clientes/clientes-v1', 
+    args: ['cd' , 'examples/apigee-cicd-maven-plugin/clientes/clientes-v1', '&&',
            'mvn' , '-ntp install -P prod -Dorg=rolandos-appmod-demos -Denv=prod-test -Dbearer=${Dbearer}']
     id: Create and Deploy revision
     entrypoint: bash
