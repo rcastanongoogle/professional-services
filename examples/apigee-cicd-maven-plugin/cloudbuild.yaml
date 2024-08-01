@@ -13,8 +13,10 @@ steps:
     entrypoint: bash
   - name: gcr.io/cloud-builders/gcloud
     args:
-      - '-c'
-      - 'echo ${bearer}'
+      - "-c"
+      - |
+        gcloud auth print-access-token > token.txt
+        echo "Token saved to token.txt"
     id: Save token to file
     entrypoint: bash
   - name: gcr.io/cloud-builders/mvn
@@ -22,7 +24,7 @@ steps:
       - '-c'
       - | 
         cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && \
-        mvn -ntp install -P prod -Dorg=rolandos-appmod-demos -Denv=prod-test -Dbearer=${bearer}
+        mvn -ntp install -P prod -Dorg=rolandos-appmod-demos -Denv=prod-test -Dbearer=${cat /workspace/token.txt}
     id: Create and Deploy revision
     entrypoint: bash
 timeout: 1600s
