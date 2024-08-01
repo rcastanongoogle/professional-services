@@ -1,8 +1,8 @@
 steps:
   - name: gcr.io/cloud-builders/git
     args:
-      - clone
-      - '-v ${_REPO}'
+      - ['clone', '-v' , '${_REPO}']
+    entrypoint: git
   - name: gcr.io/cloud-builders/git
     args:
       - '-c'
