@@ -21,8 +21,8 @@ steps:
     args:
       - '-c'
       - |
-        cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && \
-        mvn install -Pprod -Dorg=rolandos-appmod-demos -Denv=test-env -Dbearer=${Dbearer}
+        cd examples/apigee-cicd-maven-plugin/clientes/clientes-v1 && cat parent-pom.xml && \
+        mvn -ntp install -P prod -Dorg=rolandos-appmod-demos -Denv=prod-test -Dbearer=${Dbearer}
     id: Create and Deploy revision
     entrypoint: bash
 timeout: 1600s
