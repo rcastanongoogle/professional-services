@@ -125,7 +125,6 @@ inactive: This option imports the proxy or sharedflow without activating it. The
                 <apigee.env>${env}</apigee.env>
                 <apigee.authtype>oauth</apigee.authtype> <!-- only option -->
                 <apigee.bearer>${bearer}</apigee.bearer> <!-- this takes precedence over service account file -->
-                <apigee.serviceaccount.file>${file}</apigee.serviceaccount.file>
                 <apigee.options>override</apigee.options> <!-- override is default. Other options are async|inactive|clean -->
                 <apigee.googletoken.email>${googleTokenEmail}</apigee.googletoken.email> <!-- Available in Apigee X and Apigee hybrid 1.6 + -->
             </properties>
