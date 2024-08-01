@@ -2,7 +2,7 @@ steps:
   - name: gcr.io/cloud-builders/git
     args:
       - clone
-      - '${_REPO}'
+      - '--progress ${_REPO}'
   - name: gcr.io/cloud-builders/git
     args:
       - '-c'
