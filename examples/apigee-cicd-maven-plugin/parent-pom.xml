@@ -104,10 +104,15 @@
                 <apigee.org>${org}</apigee.org>
                 <apigee.env>${env}</apigee.env>
                 <apigee.authtype>oauth</apigee.authtype> <!-- only option -->
-                <apigee.bearer>${bearer}</apigee.bearer> <!-- this takes precedence over service account file -->                
-                <apigee.serviceaccount.file>${file}</apigee.serviceaccount.file>
-                <apigee.options>override</apigee.options> <!-- override is default. Other options are async|inactive|clean -->
-                <apigee.googletoken.email>${googleTokenEmail}</apigee.googletoken.email> <!-- Available in Apigee X and Apigee hybrid 1.6 + -->
+                <apigee.bearer>${bearer}</apigee.bearer> <!-- this takes precedence over service account file -->
+                <apigee.options>override</apigee.options> <!-- override is default. Other options are async|inactive|clean  
+async: This option prevents the plugin from polling to check if the deployment is complete across all pods. It speeds up the deployment process as the plugin doesn’t have to wait for confirmation from all pods.
+clean: When the clean option is used, the plugin deletes the entire proxy or sharedflow. This is helpful when you want to remove an existing deployment completely.
+inactive: This option imports the proxy or sharedflow without activating it. The proxy/sharedflow is imported into the Apigee environment but will not be active and serving traffic until explicitly activated.-->
+                <apigee.googletoken.email>${googleTokenEmail}</apigee.googletoken.email> <!-- Available in Apigee X and Apigee hybrid 1.6 + 
+                This parameter is useful when an API Proxy needs to call a Google API. Instead of manually managing authentication, you can simply provide the service account email associated with the Google API to the deployment process using the googleTokenEmail parameter.
+                {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com 
+                -->
             </properties>
         </profile>
         <profile>
