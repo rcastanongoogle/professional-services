@@ -28,4 +28,4 @@ steps:
 timeout: 1600s
 options:
   logging: CLOUD_LOGGING_ONLY
-  env: bearer=$(gcloud auth print-access-token)
+  env: ['bearer=$(gcloud auth print-access-token)']
