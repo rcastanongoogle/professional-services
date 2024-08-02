@@ -1,0 +1,27 @@
+steps:
+#Primer paso: Traer el repositorio de código de Apigee
+  - name: gcr.io/cloud-builders/git
+    args: ['clone', '-v' , '${_REPO}']
+    entrypoint: git
+#Segundo paso: Imprimir el token de auth y mandarlo al siguiente step por medio de un .txt, ya que
+#el step que sigue es un container de maven y no puedes correr comandos gcloud
+#Se hace en un .txt por que es la única forma de enviar info entre steps (containers)
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - "-c"
+      - |
+        gcloud auth print-access-token > token.txt
+        echo "Token saved to token.txt"
+    id: Save token to file
+    entrypoint: bash
+  - name: gcr.io/cloud-builders/mvn
+    args: 
+      - '-c'
+      - | 
+        cd examples/apigee-cicd-maven-plugin/sharedflow && \
+        mvn -ntp install -P prod -Dorg=rolandos-appmod-demos -Denv=prod-test -Dbearer=$(cat /workspace/token.txt)
+    id: Create and Deploy revision
+    entrypoint: bash
+timeout: 1600s
+options:
+  logging: CLOUD_LOGGING_ONLY
