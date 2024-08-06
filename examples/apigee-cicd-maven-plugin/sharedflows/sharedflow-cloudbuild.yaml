@@ -18,7 +18,7 @@ steps:
     args: 
       - '-c'
       - | 
-        cd examples/apigee-cicd-maven-plugin/sharedflows && \
+        cd professional-services/examples/apigee-cicd-maven-plugin/sharedflows && \
         mvn -ntp install -P prod -Dorg=rolandos-appmod-demos -Denv=prod-test -Dbearer=$(cat /workspace/token.txt)
     id: Create and Deploy revision
     entrypoint: bash
