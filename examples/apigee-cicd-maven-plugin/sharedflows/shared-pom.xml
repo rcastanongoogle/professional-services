@@ -60,7 +60,7 @@
                             <overwrite>true</overwrite>
                             <encoding>UTF-8</encoding>
                              <echo message="basedir parent : ${basedir}"/>
-                            <outputDirectory>${basedir}/target/apiproxy</outputDirectory>
+                            <outputDirectory>${basedir}/target/sharedflowbundle</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>sharedflowbundle</directory>
