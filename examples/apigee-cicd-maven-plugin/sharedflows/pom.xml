@@ -104,6 +104,7 @@
                 <apigee.apitype>sharedflow</apigee.apitype> <!-- This is only for Shared Flows. Not required for deploying proxy -->
                 <apigee.org>${org}</apigee.org>
                 <apigee.env>${env}</apigee.env>
+                <apigee.apitype>sharedflow</apigee.apitype>
                 <apigee.authtype>oauth</apigee.authtype> <!-- only option -->
                 <apigee.bearer>${bearer}</apigee.bearer> <!-- this takes precedence over service account file -->
                 <apigee.options>override</apigee.options> <!-- override is default. Other options are async|inactive|clean  
