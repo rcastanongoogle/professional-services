@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="94" name="SF-AUTH-APIKEY">
+  <DisplayName>SF-AUTH-APIKEY</DisplayName>
+  <Description>SF-AUTH-APIKEY</Description>
+  <CreatedAt>1718161405969</CreatedAt>
+  <LastModifiedAt>1718161405969</LastModifiedAt>
+  <Policies>
+    <Policy>API-KEY</Policy>
+    <Policy>RF-EXCEPTION</Policy>
+    <Policy>AM-ERROR-SECURITY</Policy>
+  </Policies>
+  <SharedFlows>
+    <SharedFlow>default</SharedFlow>
+  </SharedFlows>
+  <subType>SharedFlow</subType>
+</SharedFlowBundle>
