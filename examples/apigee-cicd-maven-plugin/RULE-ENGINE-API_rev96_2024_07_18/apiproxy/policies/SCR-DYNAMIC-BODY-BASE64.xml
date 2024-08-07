@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Script continueOnError="false" enabled="true" name="SCR-DYNAMIC-BODY-BASE64">
-  <DisplayName>SCR-DYNAMIC-BODY-BASE64</DisplayName>
-  <Properties/>
-  <ResourceURL>py://dynamicBodyBase64.py</ResourceURL>
-</Script>

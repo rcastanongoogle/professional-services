@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<RaiseFault continueOnError="false" enabled="true" name="RF-EXCEPTION">
-  <DisplayName>RF-EXCEPTION</DisplayName>
-  <Properties/>
-  <FaultResponse/>
-  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-</RaiseFault>
