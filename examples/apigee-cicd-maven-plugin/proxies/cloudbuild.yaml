@@ -14,6 +14,12 @@ steps:
         echo "Token saved to token.txt"
     id: Save token to file
     entrypoint: bash
+  - name: gcr.io/cloud-builders/git
+    args: 
+      - "-c"
+      - |
+        git diff HEAD~ HEAD --quiet --name-only -- Proxies/${_PROXY_FOLDER} ||touch execute.txt || echo 'No changes'
+    entrypoint: bash  
   - name: gcr.io/cloud-builders/mvn
     args: 
       - '-c'
