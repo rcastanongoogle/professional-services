@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="6" name="FakeStore">
+  <DisplayName/>
+  <Description>Tienda de productos</Description>
+  <CreatedAt>1723157293366</CreatedAt>
+  <LastModifiedAt>1723157293366</LastModifiedAt>
+  <BasePaths>/fakestore/v1</BasePaths>
+  <Policies>
+    <Policy>FC-APIKEY</Policy>
+    <Policy>AM-RESPONSE-TEMPLATE</Policy>
+    <Policy>RF-EXCEPTION</Policy>
+    <Policy>CORS</Policy>
+    <Policy>FC-SPIKEARREST</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+  <TargetEndpoints>
+    <TargetEndpoint>default</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>
