@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="54" name="SF-SPIKEARREST">
+  <DisplayName/>
+  <Description>SF-SPIKEARREST</Description>
+  <CreatedAt>1718161409723</CreatedAt>
+  <LastModifiedAt>1718161409723</LastModifiedAt>
+  <Policies>
+    <Policy>SPIKE-ARREST</Policy>
+    <Policy>AM-ERROR-SPIKEARREST</Policy>
+    <Policy>RF-EXCEPTION</Policy>
+  </Policies>
+  <SharedFlows>
+    <SharedFlow>default</SharedFlow>
+  </SharedFlows>
+  <subType>SharedFlow</subType>
+</SharedFlowBundle>
