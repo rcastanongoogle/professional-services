@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout continueOnError="false" enabled="true" name="FC-VALIDATE-OAUTH2">
-  <DisplayName>FC-VALIDATE-OAUTH2</DisplayName>
-  <Parameters/>
-  <SharedFlowBundle>SF-VALIDATION-OAUTH2</SharedFlowBundle>
-</FlowCallout>

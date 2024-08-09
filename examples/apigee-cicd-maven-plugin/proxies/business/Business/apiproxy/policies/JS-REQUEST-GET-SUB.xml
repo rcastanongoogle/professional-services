@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Javascript continueOnError="false" enabled="true" timeLimit="200" name="JS-REQUEST-GET-SUB">
-  <DisplayName>JS-REQUEST-GET-SUB</DisplayName>
-  <Properties/>
-  <ResourceURL>jsc://request_get_sub.js</ResourceURL>
-</Javascript>

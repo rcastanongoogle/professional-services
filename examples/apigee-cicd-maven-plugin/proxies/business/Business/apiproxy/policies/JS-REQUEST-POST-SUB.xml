@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Javascript continueOnError="false" enabled="true" timeLimit="200" name="JS-REQUEST-POST-SUB">
-  <DisplayName>JS-REQUEST-POST-SUB</DisplayName>
-  <Properties/>
-  <ResourceURL>jsc://request-post-sub.js</ResourceURL>
-</Javascript>
